@@ -1,0 +1,90 @@
+	As fontes chaveadas podem ser divididas em dois tipos de topologias diferentes, onde a diferença entre elas está na isolação entre o primário e o secundário. Assim, classificamos elas em:
+
+	Topologia não isolada
+	Topologia isolada
+
+	TOPOLOGIAS NÃO ISOLADAS
+
+	As topologias não isoladas podem ser ser categorizadas como:
+
+	Buck ou step-down: conversor abaixador
+	Boost ou step-up: conversor elevador
+	Buck-boost: conversor inversor
+	TOPOLOGIAS ISOLADAS
+
+	As topologias isoladas podem ser ser categorizadas como:
+
+		Forward Simples
+	Forward Push-Pull
+	Forward Half-Bridge
+	Forward Full-Bridge
+	Fly-back
+	Boost Push-Pull
+
+	STEP DOWN – CONVERSOR ABAIXADOR
+
+	Como o próprio nome sugere, nessa topologia, a tensão de saída do circuito sempre será menor, ou no máximo igual à tensão de entrada, uma vez que a sua função é reduzir a tensão. Abaixo temos o diagrama básico de um conversor empregando essa topologia.
+
+	STEP UP – CONVERSOR ELEVADOR
+
+	Ao contrário do circuito anterior, no conversor elevador a tensão de saída será sempre maior – ou igual, caso o conversor esteja inativo – à tensão de entrada. Abaixo temos o diagrama dessa topologia.
+
+	BUCK BOOST – CONVERSOR INVERSOR
+
+	Diferentemente dos circuitos anteriores, no conversor inversor o indutor não é intercalado entre a entrada e a saída, mas sim entre o elemento comutador e o terra. A vantagem está no fato da tensão de saída poder ser maior ou menor que a tensão de entrada, sem necessidade 	de modificações no circuito.
+
+	No entanto, tal circuito tem uma particularidade: A tensão de saída terá polaridade oposta em relação à tensão de entrada, o que restringe a aplicação desse circuito a casos específicos, onde a inversão de polaridade é necessária, ou pelo menos, desejável.
+
+	FORWARD SIMPLES
+	
+	Abaixo vemos o diagrama básico de um conversor forward simples (com um único elemento comutador). Nesta topologia temos dois componentes indutivos, sendo um deles um transformador com núcleo de ferrite, e o outro o indutor, já conhecido.
+
+	Quando o elemento comutador é ativado, o enrolamento primário do transformador é submetido à tensão de entrada, e gera na sua saída uma tensão, determinada pela tensão de entrada e pela sua relação de espiras. O indutor, assim como conversor abaixador, é submetido a uma 	tensão, igual à subtração da tensão de saída da tensão vinda do transformador, e armazena energia na forma de campo.
+
+	No segundo momento, quando o elemento comutador é desligado, a tensão vinda do transformador cessa, o que faz com que o indutor descarregue a energia armazenada, através do diodo com anodo aterrado. Esse conversor tem aplicabilidade relativamente restrita, pois possui 	alguns inconvenientes se comparado às outras topologias forward que veremos adiante.
+
+	FORWARD PUSH-PULL
+
+	Agora, vemos o diagrama de um conversor forward push-pull, onde temos dois elementos comutadores. Nesse tipo de circuito, os dois elementos comutadores operam alternadamente, e devem possuir tempos de chaveamento exatamente iguais.
+
+	Diferentemente do conversor forward simples, temos um transformador que opera simetricamente, o que elimina os problemas de energia residual armazenada. O único inconveniente dessa topologia é o fato de os elementos comutadores terem de suportar uma tensão igual a pelo 	menos o dobro da tensão de entrada.
+
+	FORWARD HALF-BRIDGE
+
+	Vejamos agora o diagrama básico de um conversor forward half-bridge ou em meia ponte, em duas versões diferentes: Com alimentação simétrica e com alimentação simples.
+
+	Nesta topologia não há o inconveniente de fazer com que os elementos comutadores suportem uma tensão igual ao dobro da tensão de entrada, e permite que o transformador tenha um enrolamento primário simples, ao contrário do push-pull, que exige um primário com tap central.
+
+	Na versão alimentada com fonte simétrica, o capacitor em série com o enrolamento primário do transformador serve para evitar que pequenas diferenças entre as tensões de alimentação, ou mesmo no tempo de condução dos elementos comutadores, façam com que o núcleo do 	transformador sature, o que aumenta enormemente a demanda de corrente, e pode danificar os elementos comutadores, caso não exista uma proteção contra sobrecorrente.
+
+	O capacitor é opcional, mas é muito utilizado, especialmente em conversores alimentados pela rede elétrica, onde uma pequena avaria em um dos capacitores de filtro após a retificação da entrada já faria com que houvesse uma diferença entre a tensão positiva e a negativa, 	diferença esse que comprometeria o funcionamento do conversor caso não existisse o capacitor em série.
+
+	FORWARD FULL-BRIDGE
+
+	Abaixo vemos o diagrama de um conversor forward full-bridge ou em ponte completa. Nesta topologia os elementos comutadores são ativos em pares: o elemento comutador superior de um dos lados da ponte é ativado e desativado juntamente com o elemento inferior do outro lado.
+	
+	FLYBACK
+
+	Abaixo, o diagrama de um conversor flyback, a versão isolada do conversor inversor. Embora tenhamos um elemento indutivo com dois ou mais enrolamentos (variável com a quantidade de saídas do conversor), ao pé da letra ele não funciona como um transformador, mas sim como 	indutores acoplados.
+	
+	Nesse circuito, temos como particularidade a inversão de fase entre o enrolamento primário e o(s) secundário(s). Vide a marcação de fase nos enrolamentos. No primeiro momento, quando o elemento comutador é ativado, o elemento indutivo passa a armazenar energia no núcleo, na 	forma de campo magnético, e a tensão induzida no enrolamento secundário tem polaridade inversa em relação à saída correspondente.
+
+	No segundo momento, quando o elemento comutador é desativado, aí sim a energia será entregue à saída. Se os enrolamentos fossem ligados em fase, a tensão de saída seria dependente apenas da tensão de entrada e da relação de espiras. A principal vantagem desse tipo de 	circuito é a sua simplicidade, aliada a larga faixa de tensões de entrada. De fato, a maioria das fontes “full-range” são conversores flyback.
+
+	O inconveniente desta topologia esta no fato de não ser usual para conversores de alta potência (maior que 200 W), pois o elemento indutivo tem que se descarregar totalmente entre um ciclo e outro, do contrário ele pode apresentar saturação no núcleo. Devido à esta descarga 	total, esse circuito costuma operar com largura de pulso baixa (dutty cicle de 50%), o que redunda em maiores correntes circulando pelo elemento comutador.
+
+	Essa topologia é de longe a mais popular atualmente, sendo utilizada em uma ampla gama de equipamentos eletrônicos e de informática. Dentre eles podemos citar: Televisores, DVD, videocassete, impressoras, monitores, e diversas fontes externas, como as fontes de notebook, 	etc..
+
+	Não por acaso, também, o transformador que gera alta tensão para polarização em CRT’s é chamado de flyback, pois o princípio de funcionamento é o mesmo.
+
+	BOOST PUSH-PULL
+
+	Esse circuito é a versão isolada do conversor elevador. Abaixo vemos o seu diagrama. O princípio de funcionamento é similar ao do conversor elevador, porém mais complexo.
+
+	No primeiro momento os dois elementos comutadores entram em condução, fazendo com que o enrolamento primário do transformador se comporte como um curto. Assim, o indutor é submetido à tensão de entrada, e armazena energia. No segundo momento um dos elementos comutadores é 	desligado, enquanto o outro permanece em condução. Assim, a energia armazenada no indutor é transferida para a carga através do transformador.
+
+	Depois, o ciclo se repete, ao contrário: O elemento comutador desligado é ativado novamente, e depois do tempo determinado pelo circuito de controle, o outro elemento comutador é desligado, fazendo com que a energia que foi armazenada no indutor seja transferida para a 	saída pelo transformador em sentido inverso em relação ao primeiro ciclo.
+
+	Como vantagem desse circuito temos o fato de ele operar com baixas tensões de entrada, o que proporciona um grande aproveitamento em circuitos alimentados com baterias. O inconveniente dele está na complexidade do controle.
+
+	Essa topologia de conversor é comumente usada em nobreaks senoidais, onde converte a tensão do banco de baterias em uma tensão contínua regulada, para alimentação do inversor.
