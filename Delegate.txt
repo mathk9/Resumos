@@ -1,0 +1,7 @@
+https://www.tutorialspoint.com/csharp/csharp_delegates.htm
+
+https://www.c-sharpcorner.com/UploadFile/84c85b/delegates-and-events-C-Sharp-net/
+
+https://www.devmedia.com.br/conceitos-e-exemplos-com-os-eventos-delegates-events-e-generics-estrutura-da-linguagem-parte-2/20062
+
+http://www.macoratti.net/16/11/c_evthdl1.htm
