@@ -1,0 +1,32 @@
+Resumo
+
+Gitflow é um dos muitos estilos de fluxos de trabalho Git que você e sua equipe podem utilizar.
+
+Alguns dos principais aprendizados para saber sobre o Gitflow são:
+
+°O fluxo de trabalho é ótimo para um fluxo de trabalho de software baseado em lançamentos.
+°O Gitflow oferece à produção um canal dedicado para hotfixes.
+
+O fluxo geral do Gitflow é:
+
+1- Uma ramificação de desenvolvimento é criada a partir da branch principal
+2- Uma ramificação de lançamento é criada a partir da ramificação de desenvolvimento
+3 -Ramificações de recurso são criadas a partir da ramificação de desenvolvimento
+4- Quando um recurso é concluído, ele é mesclado na ramificação de desenvolvimento
+5- Quando a ramificação de lançamento é concluída, ela é mesclada nas ramificações de desenvolvimento e principal
+6- Caso um problema seja detectado na branch principal,uma ramificação de hotfix é criada a partir da principal
+7- Após a conclusão da ramificação de hotfix, ela é mesclada para as ramificações de desenvolvimento e principal
+
+Exemplo:
+
+git checkout master
+git checkout -b develop
+git checkout -b feature_branch
+# work happens on feature branch
+git checkout develop
+git merge feature_branch
+git checkout master
+git merge develop
+git branch -d feature_branch
+
+Fonte: https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow
