@@ -16,64 +16,102 @@ Versionamento Semântico: um conjunto simples de regras e requisitos que ditam c
 1. versão MAIOR: quando fizer mudanças incompatíveis na API,
 2. versão MENOR: quando adicionar funcionalidades mantendo compatibilidade.
 3. versão PATCH (Correção): quando corrigir falhas mantendo compatibilidade.
+
 Mais informações: http://semver.org/lang/pt-BR/
+
 Git: Um sistema de controle de versão distribuído e um sistema de gerenciamento de código fonte, com ênfase em velocidade. Cada diretório de trabalho do Git é um repositório com um histórico completo e habilidade total de acompanhamento das revisões, não dependente de acesso a uma rede ou a um servidor central, ele se utiliza de Branches (“ramos”) para desenvolver funcionalidades isoladas umas das outras.
+
 Tutorial Básico:
 Seus repositórios locais consistem em três “árvores” mantidas pelo git.
 a primeira delas é sua Working Directory que contém os arquivos vigentes.
 a segunda é a Index que funciona como uma área temporária e finalmente
 a HEAD que aponta para o último commit (confirmação) que você fez.
+
 Comandos Básicos:
 git config –-global user.name [SEU NOME]
 Define o nome de usuário do sitema git.
+
 git config -–global user.email [SEU EMAIL]
 Define o email de usuário do sitema git.
+
 git init –-bare [NOMEDOPROJETO].git
 Inicia um projeto com versionamento git.
+
 git clone [CAMINHODAPASTADOPROJETO]
 Clona o diretório padrão do projeto.
+
 git remote add origin [CAMINHODAPASTADOPROJETO]
 Define a pasta de projeto como o diretório original do projeto.
 Nota: para alterar repositório de origem: git remote set-url origin [CAMINHODAPASTANODROPBOX]
+
 git pull origin [BRANCH]
 Atualiza o branch do seu repositório com a ultima versão do branch do repositório de origem.
+
 git add [ARQUIVO]
 Propor mudanças em um arquivo (Adiciona-la ao index do seu diretório padrão).
 Nota: Para adicionar todos os arquivos modificados de uma vez: git add . (troque o nome do arquivo por um ponto)
+
 git commit -m “COMENTARIO PARA MARCAR MODIFICAÇÂO”
 Confirmar as mudanças que estão no index do seu diretório ( Adiciona no HEAD do seu diretório padrão)
+
 git push -u origin [BRANCH]
 Envia as ultimas modificações que estão no HEAD do seu diretório padrão, do BRANCH selecionado para o BRANCH do projeto de origem.
+
+git push --progress [CAMINHODAPASTADOPROJETO] [BRANCH]
+
 git checkout [BRANCH]
 muda o branch ativo para o branch informado.
+
 gitk
 Abre a interface gráfica padrão do git.
+
+git remote -v
+Lista todas as pastas de projeto.
+
+git remote rm [NOMEDOREMOTE]
+Apaga a pasta de projeto
+
 Mais informações: http://rogerdudler.github.io/git-guide/index.pt_BR.html
+
 Git Flow: um modelo de fluxo de trabalho para desenvolvimento de software com uma ou mais equipes distintas contribuindo com a mesma base de código que visa normalizar o controle de versões. o Git Flow estabelece algumas regras de nomenclaturas para tipos de branches enquanto, ao mesmo tempo, define o que cada tipo de branch faz:
+
 Branch master ( Mestre / principal )
 É a branch que contém código em nível de produção, ou seja, o código mais maduro existente na sua aplicação. Todo o código novo produzido eventualmente é juntado com a branch máster em algum momento do desenvolvimento;
+
 Branch develop ( Desenvolvimento )
 É a branch que contém código em nível preparatório para o próximo deploy. Ou seja, quando features são terminadas, elas são juntadas com a branch develop, testadas (em conjunto, no caso de mais de uma feature), e somente depois as atualizações da branch develop passam por mais um processo para então ser juntadas com a branch master;
+
 Branches feature/* (Desenvolvimento de novas Funcionalidades)
 São branches no qual são desenvolvidos recursos novos para o projeto em questão. Essas branches tem por convenção nome começando com feature/ (exemplo: feature/new-layout) e são criadas a partir da branch develop (pois um recurso pode depender diretamente de outro recurso em algumas situações), e, ao final, são juntadas com a branch develop;
+
 Branches hotfix/* (Correção de Bugs críticos)
 São branches no qual são realizadas correções de bugs críticos encontrados em ambiente de produção, e que por isso são criadas a partir da branch master, e são juntadas diretamente com a branch master e com a branch develop (pois os próximos deploys também devem receber correções de bugs críticos, certo?). Por convenção, essas branches tem o nome começando com hotfix/ e terminando com o próximo sub-número de versão (exemplo: hotfix/2.31.1), normalmente seguindo as regras de algum padrão de versionamento, como o padrão do versionamento semântico;
+
 Branches release/* (Inserção de Novas Funcionalidades)
 São branches com um nível de confiança maior do que a branch develop, e que se encontram em nível de preparação para ser juntada com a branch master e com a branch develop (para caso tenha ocorrido alguma correção de bug na branch release/* em questão). Note que, nessas branches, bugs encontrados durante os testes das features que vão para produção podem ser corrigidos mais tranquilamente, antes de irem efetivamente para produção. Por convenção, essas branches tem o nome começando com release/ e terminando com o número da próxima versão do software (seguindo o exemplo do hotfix, dado acima, seria algo como release/2.32.0), normalmente seguindo as regras do versionamento semântico, como falado acima;
+
 Comandos Básicos:
+
 git flow feature start [NOMEDORECURSOQUEVOCÊQUERCRIAR]
-Cria um branch feature/[NOMEDORECURSOQUEVOCÊQUERCRIAR] para o desenvolvimento de novos recursos
+Cria um branch feature/[NOMEDORECURSOQUEVOCÊQUERCRIAR] para o desenvolvimento de novos recursos.
+
 git flow feature finish [NOMEDORECURSOQUEVOCÊQUERCRIAR]
 Finaliza o branch feature/[NOMEDORECURSOQUEVOCÊQUERCRIAR] unindo o mesmo com o branch develop.
+
 git flow release start [versão]
 Cria um branch release/[VERSAO] para preparar o código para unir com o branch master.
+
 git flow release finish [versão]
 Finaliza o branch release/[VERSAO] unindo o mesmo com o branch master.
+
 git flow hotfix start [versão]
 Cria um branch hotfix/[VERSAO] para a correção de bugs críticos.
+
 git flow hotfix finish [versão]
 Finaliza o branch hotfix/[VERSAO] unindo o mesmo com o branch master.
+
 Mais informações: https://fjorgemota.com/git-flow-uma-forma-legal-de-organizar-repositorios-git/
+
 Alguns comandos do editor de texto VIM:
 Para entrar no modo de edição precione “I”
 Para sair do modo de edição precione “Ctrl+C”
@@ -81,112 +119,164 @@ Para salvar digite “:w”
 Para sair sem salvar digite “:q”
 Para sair E salvar digite “:wq”
 Para sair E salvar você tambem pode digitar “ZZ” (Em maiusculo)
+
 2. Passo a Passo
+
 Primeiros Passos
+
 1 — Instale o Git (https://git-scm.com/downloads)
+
 2 — Inicie o Git Bash.
+
 3 — Configure o seu nome e email:
 git config –global user.name [SEU NOME]
 git config –global user.email [SEU EMAIL]
+
 4 — Finalize o Git Bash.
+
 Criando um novo projeto (utilizando o DropBox)
-1 — Vá até o diretório compartilhado do DropBox
+
+1 — Vá até o diretório compartilhado do Dro
+
 2 — Inicie o Git Bash neste diretório.
+
 3 — Inicie um novo projeto com versionamento git.
 git init –-bare [NOMEDOPROJETO].git
+
 4 — Finalize o Git Bash.
+
 5 — Compartilhe a pasta do projeto com a equipe.
+
 Clonando um projeto (utilizando o DropBox)
+
 1 — Vá até o diretório onde você irá trabalhar
+
 2 — Inicie o Git Bash neste diretório.
+
 3 — clone o projeto existente utilizando como origem a pasta compartilhada no Dropbox.
 git clone [CAMINHODAPASTADOPROJETONODROPBOX]
 Nota: O caminho da pasta utiliza barra invertida no Git Bash.
+
 4 — Entre na pasta do projeto criada com o comando anterior
 Cd [NOMEDAPASTADOPROJETO]
+
 5 — Defina a pasta do projeto como a pasta de origem do projeto.
 git remote add origin [CAMINHODAPASTADOPROJETONODROPBOX]
 Nota 1: O caminho da pasta utiliza barra invertida no Git Bash.
 Nota 2: Caso o projeto já esteja avançado este comando não será necessário pois todo clone do projeto já irá vir com a origem do projeto configurado.
+
 6 — Inicie o Git Flow.
 git flow init
 Nota 1: Ao realizar este comando, o Git Bash irá te fazer uma série de perguntas, apenas pressione “Enter” em todas para manter o padrão do git flow.
 Nota 2: Você precisará iniciar o git flow sempre que clonar a pasta do projeto, porem somente uma vez em cada “clone”.
+
 7 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 8 — Finalize o Git Bash.
 Procedimentos padrões para o desenvolvimento de novas funcionalidades
+
 1 — Vá até o diretório onde você irá trabalhar
+
 2 — Inicie o Git Bash neste diretório.
+
 3 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 4 — Certifique-se de está com o branch de desenvolvimento (develop) ativo, caso não esteja, ative-o:
 git checkout develop
+
 5 — Crie o branch para o desenvolvimento do novo recurso
 git flow feature start [NOMEDORECURSO]
 Nota 1: Não utilize espaço na nomenclatura do branch, utilize camelCase.
+
 6 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
 git push — u origin feature/[NOMEDORECURSO]
+
 7 — Trabalhe no desenvolvimento da funcionalidade.
 Nota: Para que você possa retornar seu código em pontos chaves do seu desenvolvimento, realize os passos 7.x todos os dias, toda vez que um trecho de código essencial for desenvolvido no decorrer desta tarefa ou ao finalizar a tarefa.
+
 7.1 — Certifique-se de está com o branch de desenvolvimento da funcionalidade ativo (feature/[NOMEDORECURSO]) ativo, caso não esteja, ative-o.
 git checkout feature/[NOMEDORECURSO]
+
 7.2 — Adicione as mudanças ao index do seu diretório padrão.
 git add .
+
 7.3 — Adicione as mudanças ao Head do seu diretório padrão.
 git commit -m “COMENTARIO PARA MARCAR MODIFICAÇÂO”
+
 7.4 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 7.5 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
 git push — u origin feature/[NOMEDORECURSO]
+
 8 — Certifique-se de está com o branch de desenvolvimento da funcionalidade ativo (feature/[NOMEDORECURSO]) ativo, caso não esteja, ative-o:
 git checkout feature/[NOMEDORECURSO]
+
 9 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 10 — finalize o branch para o desenvolvimento do novo recurso
 git flow feature finish [NOMEDORECURSO]
+
 11 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
+
 12 — Finalize o Git Bash.
 Procedimentos padrões para publicação de novas funcionalidades
+
 1 — Vá até o diretório onde você irá trabalhar
+
 2 — Inicie o Git Bash neste diretório.
+
 3 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 4 — Certifique-se de está com o branch de desenvolvimento (develop) ativo, caso não esteja, ative-o:
 git checkout develop
+
 5 — Crie o branch para preparar a união de todos os recursos desenvolvidos até o momento e que se encontram no branch develop com o branch master.
 git flow release start [VERSAO]
+
 6 — Caso alguma correção seja necessária, realize-a neste momento.
 Nota: Para que você possa retornar seu código em pontos chaves do seu desenvolvimento, realize os passos 6.x todos os dias, toda vez que um trecho de código essencial for desenvolvido no decorrer desta tarefa ou ao finalizar a tarefa.
+
 6.1 — Certifique-se de está com o branch de release ativo (release/[VERSAO]) ativo, caso não esteja, ative-o.
 git checkout release/[ VERSAO]
+
 6.2 — Adicione as mudanças ao index do seu diretório padrão.
 git add .
+
 6.3 — Adicione as mudanças ao Head do seu diretório padrão.
 git commit -m “COMENTARIO PARA MARCAR MODIFICAÇÂO”
+
 6.4 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 6.5 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
 git push — u release/[ VERSAO]
+
 7 — Certifique-se de esta com o branch de release ativo (release/[VERSAO]) ativo, caso não esteja, ative-o:
 git checkout release/[VERSAO]
+
 8 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 9 — Finalize o branch de release unindo o mesmo com o branch master
 git flow release finish [VERSAO]
 Nota: O Git Flow abre o editor de texto VIM três vezes:
@@ -201,44 +291,61 @@ Para salvar digite “:w”
 Para sair sem salvar digite “:q”
 Para sair E salvar digite “:wq”
 Para sair E salvar você tambem pode digitar “ZZ” (Em maiusculo)
+
 10 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 11 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
+
 12 — Finalize o Git Bash.
 Procedimentos padrões para correções de Bugs críticos
+
 1 — Vá até o diretório onde você irá trabalhar
+
 2 — Inicie o Git Bash neste diretório.
+
 3 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 4 — Certifique-se de está com o branch master(master) ativo, caso não esteja, ative-o:
 git checkout master
+
 5 — Crie o branch para corrigir o bug.
 git flow hotfix start [VERSAO]
 Nota: Exemplo de versão 0.1.1 (Resolve bug na versão 0.1.0)
+
 6 — Realize a correção necessária.
 Nota: Para que você possa retornar seu código em pontos chaves do seu desenvolvimento, realize os passos 6.x todos os dias, toda vez que um trecho de código essencial for desenvolvido no decorrer desta tarefa ou ao finalizar a tarefa.
+
 6.1 — Certifique-se de esta com o branch de correção do bug ativo (hotfix/[VERSAO]) ativo, caso não esteja, ative-o.
 git checkout hotfix/[ VERSAO]
+
 6.2 — Adicione as mudanças ao index do seu diretório padrão.
 git add .
+
 6.3 — Adicione as mudanças ao Head do seu diretório padrão.
 git commit -m “COMENTARIO PARA MARCAR MODIFICAÇÂO”
+
 6.4 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 6.5 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
 git push — u hotfix/[ VERSAO]
+
 7 — Certifique-se de esta com o branch de correção do bug ativo (hotfix/[VERSAO]) ativo, caso não esteja, ative-o:
 git checkout hotfix/[ VERSAO]
+
 9 — Atualize a sua versão do projeto.
 git pull origin master
 git pull origin develop
+
 10 — Finalize o branch de correção de bug unindo o mesmo com o branch master
 git flow hotfix finish [VERSAO]
 Nota: O Git Flow abre o editor de texto VIM três vezes:
@@ -253,7 +360,9 @@ Para salvar digite “:w”
 Para sair sem salvar digite “:q”
 Para sair E salvar digite “:wq”
 Para sair E salvar você tambem pode digitar “ZZ” (Em maiusculo)
+
 11 — Compartilhe a sua versão do projeto com a equipe.
 git push — u origin master
 git push — u origin develop
+
 12 — Finalize o Git Bash.
